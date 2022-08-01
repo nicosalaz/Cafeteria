@@ -22,3 +22,5 @@ Para el almacenamiento de la información se hizo uso de un gestor de base de da
 - **Estilos:** CSS.
 
 ## Diseño
+
+[imagen](C:\Users\Nicolas\Development\UML\PruebagrupoSAI\MER_cafeteria.jpg)
