@@ -1,0 +1,195 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+}
+
+.header-page{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:space-between;
+    background-color:   #fae5d3 ;
+    border-bottom: 2px solid  #6e2c00 ;
+}
+
+.header-page .logo{
+    width: 35vw;
+    height: 20vh;
+    display: flex;
+    flex-flow: row;
+    justify-content:center;
+}
+
+.header-page .logo .img-logo{
+    width: 15vw;
+    height: 20vh;
+}
+
+.header-page .logo .img-logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-page .menu{
+    width: 35vw;
+    height: 20vh;
+    /*background-color:blue;*/
+    display: flex;
+    flex-flow: row;
+    justify-content:start;
+    align-items: center;
+}
+
+.header-page .menu .list-inline .list-inline-item a button{
+    background-color: transparent;
+    color: #6e2c00;
+    border-color: #6e2c00;
+}
+
+.header-page .menu .list-inline .list-inline-item button{
+    background-color: #6e2c00;
+    border-color: #6e2c00;
+}
+
+.header-page .menu .list-inline .list-inline-item a button:hover{
+    background-color: #6e2c00;
+    color: white;
+    border-color: #6e2c00;
+}
+
+.footer-page{
+    width: 100vw;
+    height: 8vh;
+    position: static;
+    background-color:   #fae5d3 ;
+    border-top: 2px solid  #6e2c00 ;
+    bottom: 0;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.footer-page p{
+    color: #6e2c00;
+}
+
+.body-page{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items:center;
+}
+
+.body-page .cards{
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.body-page .cards .product-card{
+    width: 25vw;
+    height: auto;
+    /*background-color: yellow;*/
+    border-radius: 15px;
+    border: 2px solid  #6e2c00;
+    margin: 15px 5px 15px 5px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.body-page .cards .product-card h3{
+    align-self: center;
+}
+
+.body-page .cards .product-card p{
+    align-self: center;
+}
+.body-page .cards .product-card form{
+    width: auto;
+    align-self: center;
+}
+
+.container-table{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.container-table .encabezado{
+    width: 80%;
+    height: auto;
+    margin: 10px 10px 5px 10px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.container-table .table-inventario{
+    width: 80%;
+    height: auto;
+    margin: 10px 10px 5px 10px;
+}
+
+.create-prod{
+    width: 80%;
+    height: auto;
+    margin: 0px 0px 10px 0px;
+}
+
+.create-prod button{
+    border-radius: 50%;
+}
+
+.form-edit{
+    display: flex;
+    justify-content: center;
+}
+
+.form-edit form{
+    width: 50%;
+}
+
+.form-edit form button{
+    align-self: center;
+    margin-top: 10px;
+}
+
+.container-fac{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: center;
+    padding: 20px 0px 20px 0px;
+    
+}
+
+.container-fac .factura{
+    width: 35%;
+    height: auto;
+    padding: 20px 0px 20px 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.container-fac .factura .table-items{
+    width: 80%;
+    height: auto;
+}

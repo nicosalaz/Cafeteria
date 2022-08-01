@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block botones-menu %}
+    <li class="list-inline-item">
+    <a href="{% url 'ventas'%}">
+        <button type="button" class="btn btn-success">
+            Volver
+        </button>
+    </a>
+    </li>
+{% endblock %}
+
+{% block body-content %}
+
+    <div class="container-fac">
+        <div class="factura">
+            {% if venta %}
+                <h3>Factura No. {{venta.id_venta}} </h3>
+                <h5>Fecha: {{venta.fecha}}</h5>
+                <hr>
+                <div class="table-items">
+                    <table class="table">
+                        <thead>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio unidad</th>
+                            <th>Precio * Cantidad</th>
+                        </thead>
+                        <tbody>
+                            {% if detalle %}
+                                {% for d in detalle %}
+                                    <tr>
+                                        <td><h5>{{ d.fk_id_producto_detalle.nombre }}</h5></td>
+                                        <td><h5>{{ d.cantidad_comprada }} Und</h5></td>
+                                        <td><h5>${{ d.fk_id_producto_detalle.precio }}</h5></td>
+                                        <td><h5>${{ d.precio_cantidad_detalle }}</h5></td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            <tr>
+                                <td colspan="2">
+                                    <h5>Total: ${{venta.total}}</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h5>Cliente: {{venta.nombre_usuario|upper}}</h5>
+                <hr>
+                <h5>Café con Letras, es un gusto atenderle!</h5>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

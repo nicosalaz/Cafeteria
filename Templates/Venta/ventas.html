@@ -1,0 +1,56 @@
+{% extends '../Inventario/inventarioProductos.html' %}
+
+{% block botones-menu %}
+    <li class="list-inline-item">
+    <a href="{% url 'index'%}">
+        <button type="button" class="btn btn-success">
+            Index
+        </button>
+    </a>
+    </li>
+    <li class="list-inline-item">
+    <a href="{% url 'inventario'%}">
+        <button type="button" class="btn btn-primary">
+            Inventario
+        </button>
+    </a>
+    </li>
+{% endblock %}
+
+{% block encabezado %}
+    <h1 >VENTAS</h1>
+{% endblock %}
+
+{% block table-body %}
+    <thead>
+        <th>Comprador</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Opciones</th>
+    </thead>
+    <tbody>
+        {% if ventas %}
+        {% for venta in ventas %}
+        <tr>
+            <td>{{ venta.nombre_usuario|upper }}</td>
+            <td>{{ venta.fecha }}</td>
+            <td>{{ venta.total }}</td>
+            <td>
+                <a href="{% url 'detalleVenta' venta.id_venta %}">
+                    <button class="btn btn-outline-info">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <tr>
+                <h1>NO HAY VENTAS REGISTRADAS</h1>
+            </tr>
+        {% endif %}
+    </tbody>
+{% endblock %}
+
+{% block btn-modal %}
+{% endblock %}

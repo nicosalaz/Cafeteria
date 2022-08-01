@@ -1,0 +1,135 @@
+{% extends '../index.html' %}
+
+{% block botones-menu %}
+    <li class="list-inline-item">
+    <a href="{% url 'index'%}">
+        <button type="button" class="btn btn-success">
+        Index
+        </button>
+    </a>
+    </li>
+    <li class="list-inline-item">
+    <a href="{% url 'ventas'%}">
+        <button type="button" class="btn btn-primary">
+        Ventas
+        </button>
+    </a>
+    </li>
+{% endblock %}
+
+{% block body-content %}
+
+    <div class="container-table">
+        <div class="encabezado">
+            {% block encabezado %}
+            <h1 >INVENTARIO</h1>
+            {% endblock %}
+        </div>
+        <div class="table-inventario">
+            <table class="table table-success table-striped">
+                {% block table-body %}
+                <thead>
+                    <th>Nombre Producto</th>
+                    <th>Precio</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Opciones</th>
+                </thead>
+                <tbody>
+                    {% if productos %}
+                    {% for p in productos%}
+                    <tr>
+                        <td>{{ p.fk_id_producto.nombre|upper }}</td>
+                        <td>{{ p.fk_id_producto.precio }}</td>
+                        <td>{{ p.fk_id_producto.descripcion|upper }}</td>
+                        <td>{{ p.cantidad }}</td>
+                        <td>
+                            <a href="{% url 'editarProducto' p.fk_id_producto.id_producto %}">
+                                <button type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modelDelete" value="{{p.fk_id_producto.id_producto}}" onClick="botonEliminar(this)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                           
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td><h1>INVENTARIO VACIO</h1></td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+                {% endblock %}
+            </table>
+        </div>
+        {% block btn-modal %}
+        <div class="create-prod">
+            <!-- MODAL CREAR -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+        {% endblock %}
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-producto" method="post" action="/Tienda/crearProducto/">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="nombre_producto" class="col-form-label">Nombre del producto:</label>
+                        <input type="text" class="form-control" minlength="1" maxlength="100" id="nombre_producto" name="nombre_producto" pattern="[A-Za-z\s]+">
+                    </div>
+                    <div class="mb-3">
+                        <label for="precio_producto" class="col-form-label">Precio:</label>
+                        <input type="text" min="100" max="100000" class="form-control" id="precio_producto" name="precio_producto" pattern="[0-9]+">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="col-form-label">Descripción:</label>
+                        <input type="text" class="form-control" minlength="1" maxlength="150" id="descripcion" name="descripcion" pattern="[A-Za-z\s]+">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="col-form-label">Cantidad:</label>
+                        <input type="text" min="1" max="500" class="form-control" id="cantidad" name="cantidad" pattern="[0-9]+">
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-producto" class="btn btn-primary">Crear</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        <!-- MODAL ELIMINAR -->
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modelDelete" tabindex="-1" aria-labelledby="modelDeleteLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modelDeleteLabel">¿Seguro?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modelTextEdit" >
+                        
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="eliminarProducto()" class="btn btn-primary">Eliminar</button>
+                    </div>
+                </div>
+                </div>
+                <form method="post" id="formDelete" action="">
+                    {% csrf_token %}
+                </form>
+            </div>
+
+  
+    </div>
+
+{% endblock %}
