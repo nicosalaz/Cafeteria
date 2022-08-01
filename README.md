@@ -22,5 +22,4 @@ Para el almacenamiento de la información se hizo uso de un gestor de base de da
 - **Estilos:** CSS.
 
 ## Diseño
-
-![imagen](C:/Users/Nicolas/Development/UML/PruebagrupoSAI/MER_cafeteria.jpg)
+![MER_cafeteria](https://user-images.githubusercontent.com/71720590/182215928-362837cf-f52c-4932-aaab-2deccba1f12a.jpg)
