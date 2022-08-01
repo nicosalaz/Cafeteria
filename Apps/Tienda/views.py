@@ -1,11 +1,11 @@
-import json
-from operator import index
-from re import template
+#from operator import index
+#from re import template
 from webbrowser import get
 from django.shortcuts import render, redirect
 from .models import CarritoCompra, DetalleVenta, Producto, Inventario, Venta
 from django.db import transaction
 from django.db.models import Sum
+from datetime import datetime
 #from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
@@ -149,7 +149,8 @@ class VentaController():
             try:
                 Venta.objects.create(
                     nombre_usuario=nombre_comprador,
-                    total=info_carrito['total']['precio_cantidad_carrito__sum'])
+                    total=info_carrito['total']['precio_cantidad_carrito__sum'],
+                    fecha=datetime.today().strftime('%Y-%m-%d'))
                 last_id = Venta.objects.latest('id_venta')
                 instanciaVenta = Venta.objects.get(
                     id_venta=last_id.id_venta)

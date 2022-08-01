@@ -1,5 +1,15 @@
 {% extends '../index.html' %}
 
+{% block botones-menu %}
+    <li class="list-inline-item">
+    <a href="{% url 'inventario'%}">
+        <button type="button" class="btn btn-success">
+        Volver
+        </button>
+    </a>
+    </li>
+{% endblock %}
+
 {% block body-content %}
 {% if producto %}
 <div class="form-edit">
@@ -7,19 +17,19 @@
         {% csrf_token %}
         <div class="sm-3">
             <label for="nombre_producto" class="col-form-label">Nombre del producto:</label>
-            <input type="text" value="{{ producto.nombre}}" minlength="5" maxlength="50" class="form-control" id="nombre_producto" name="nombre_producto"  pattern="[A-Za-z\s]+">
+            <input type="text" required value="{{ producto.nombre}}" minlength="5" maxlength="50" class="form-control" id="nombre_producto" name="nombre_producto"  pattern="[A-Za-z\s]+">
         </div>
         <div class="sm-3">
             <label for="precio_producto" class="col-form-label">Precio:</label>
-            <input type="text" value="{{ producto.precio}}" min="100" max="100000" class="form-control" id="precio_producto" name="precio_producto" pattern="[0-9]+">
+            <input type="text" required value="{{ producto.precio}}" min="100" max="100000" class="form-control" id="precio_producto" name="precio_producto" pattern="[0-9]+">
         </div>
         <div class="sm-3">
             <label for="descripcion" class="col-form-label">Descripción:</label>
-            <input type="text" value="{{ producto.descripcion}}" minlength="10" maxlength="150"  class="form-control" id="descripcion" name="descripcion" pattern="[A-Za-z\s]+">
+            <input type="text" required value="{{ producto.descripcion}}" minlength="10" maxlength="150"  class="form-control" id="descripcion" name="descripcion" pattern="[0-9A-Za-z\s]+">
         </div>
         <div class="sm-3">
             <label for="cantidad" class="col-form-label">Cantidad:</label>
-            <input type="text" value="{{ producto.cantidad}}" min="1" max="500" class="form-control" id="cantidad" name="cantidad" pattern="[0-9]+">
+            <input type="text" required value="{{ producto.cantidad}}" min="1" max="500" class="form-control" id="cantidad" name="cantidad" pattern="[0-9]+">
         </div>
         <button type="submit"  class="btn btn-primary">Actualizar</button>
         <a href="{% url 'inventario' %}">
